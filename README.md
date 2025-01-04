@@ -1,2 +1,2 @@
 ### Ray Tracing in C
-#### Stack Used - C, SDL2
+#### Stack Used - C, SDL2/SDL.h
