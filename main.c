@@ -5,6 +5,7 @@
 #define WIDTH 900
 #define HEIGHT 600
 #define COLOR_WHITE 0xffffffff
+#define COLOR_BLACK 0x00000000
 
 struct Circle{
     double x; // x coordinate of circle
@@ -49,16 +50,29 @@ int main(int argc, char** argv){
     // };
     // Fill the rectangle with white colour 
     // SDL_FillRect(surface, &rect, COLOR_WHITE);
-    
     struct Circle circle = {200, 200, 80};
-    fillCircle(surface, circle, COLOR_WHITE);
-    // Update the surface
-    SDL_UpdateWindowSurface(window);
-
-
-    // Pauses the program for 5000ms, often used to control frame rates
-    // ./main exits after 5000 ms
-    SDL_Delay(5000);
+    // boolean to check the exit condition
+    int simulation_running = 1;
+    // Event captures external interactions to the window and surface
+    SDL_Event event;
+    while(simulation_running){
+        while(SDL_PollEvent(&event)){
+            //  SDL_QUIT -> clicking the 'x' button to close the window
+            if(event.type == SDL_QUIT){
+                simulation_running = 0;
+            }
+            if(event.type == SDL_MOUSEMOTION && event.motion.state != 0){
+                circle.x = event.motion.x;
+                circle.y = event.motion.y;
+            }
+        }
+        fillCircle(surface, circle, COLOR_WHITE);
+        // Update the surface
+        SDL_UpdateWindowSurface(window);
+        // Corresponds to 100 FPS
+        SDL_Delay(10);
+    }
+    
 
     return 0;
 }
