@@ -6,3 +6,8 @@ The GUI consists of a circular light source and an opaque object. The object doe
 
 The light source can be moved around to see how the light rays change.
 <br> To use and test this code, <code>SDL2</code> is required. Check out my easy to follow [installation guide](https://github.com/51ddhesh/SDL2_Setup).
+
+##### Demo
+
+https://github.com/user-attachments/assets/bca05508-eb65-4812-9df2-7fee7a7dc491
+
